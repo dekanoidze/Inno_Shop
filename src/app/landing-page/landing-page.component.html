@@ -1,0 +1,93 @@
+<main class="landing">
+  <section class="hero">
+    <div class="hero__content">
+      <span class="hero__badge">New Arrivals ✨</span>
+      <h1 class="hero__title">
+        Shop Smarter,<br /><strong>Live Better</strong>
+      </h1>
+      <p class="hero__subtitle">
+        Discover thousands of products at unbeatable prices. Fast delivery, easy
+        returns.
+      </p>
+      <div class="hero__actions">
+        <button class="btn btn--primary" routerLink="/catalog">Shop Now</button>
+        <button class="btn btn--ghost">View Deals</button>
+      </div>
+    </div>
+    <div class="hero__image">
+      <div class="hero__image-blob">
+        <span>🛍️</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="stats__container">
+      <div class="stats__item">
+        <span class="stats__number">10K+</span>
+        <span class="stats__label">Products</span>
+      </div>
+      <div class="stats__item">
+        <span class="stats__number">50K+</span>
+        <span class="stats__label">Happy Customers</span>
+      </div>
+      <div class="stats__item">
+        <span class="stats__number">99%</span>
+        <span class="stats__label">Satisfaction</span>
+      </div>
+      <div class="stats__item">
+        <span class="stats__number">24/7</span>
+        <span class="stats__label">Support</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="categories">
+    <div class="section__container">
+      <h2 class="section__title">Shop by Category</h2>
+      <p class="section__subtitle">Find exactly what you're looking for</p>
+      <div class="categories__grid">
+        <div class="category-card" *ngFor="let cat of categories">
+          <span class="category-card__icon">{{ cat.icon }}</span>
+          <h3 class="category-card__name">{{ cat.name }}</h3>
+          <span class="category-card__count">{{ cat.count }} items</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="products">
+    <div class="section__container">
+      <h2 class="section__title">Featured Products</h2>
+      <p class="section__subtitle">Handpicked just for you</p>
+      <div class="products__grid">
+        <div class="product-card" *ngFor="let product of products">
+          <div class="product-card__image">
+            <span>{{ product.emoji }}</span>
+            <span class="product-card__badge" *ngIf="product.badge">{{
+              product.badge
+            }}</span>
+          </div>
+          <div class="product-card__body">
+            <span class="product-card__category">{{ product.category }}</span>
+            <h3 class="product-card__name">{{ product.name }}</h3>
+            <div class="product-card__footer">
+              <span class="product-card__price">${{ product.price }}</span>
+              <button class="product-card__btn">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="cta__container">
+      <h2 class="cta__title">Ready to start shopping?</h2>
+      <p class="cta__subtitle">Join thousands of happy customers today.</p>
+      <button class="btn btn--white" routerLink="/catalog">
+        Explore Catalog
+      </button>
+    </div>
+  </section>
+</main>

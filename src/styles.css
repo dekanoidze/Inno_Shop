@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --color-primary: #6c63ff;
+  --color-secondary: #ff6584;
+  --color-accent: #43e97b;
+
+  --color-bg: #f8f9fa;
+  --color-surface: #ffffff;
+  --color-border: #e9ecef;
+
+  --color-text: #212529;
+  --color-text-muted: #6c757d;
+
+  --color-error: #ff4757;
+  --color-success: #43e97b;
+  --color-warning: #ffa502;
+}
+
+* {
+  font-family: sans-serif;
+}

@@ -1,0 +1,51 @@
+<footer class="footer">
+  <div class="footer__container">
+    <!-- Brand -->
+    <div class="footer__brand">
+      <a routerLink="/" class="footer__logo">
+        <span>🛍️</span>
+        <span>Inno<strong>Shop</strong></span>
+      </a>
+      <p class="footer__tagline">Your modern shopping destination.</p>
+    </div>
+
+    <!-- Links -->
+    <div class="footer__links">
+      <div class="footer__col">
+        <h4 class="footer__col-title">Shop</h4>
+        <ul>
+          <li><a routerLink="/catalog">Catalog</a></li>
+          <li><a routerLink="/deals">Deals</a></li>
+          <li><a routerLink="/new">New Arrivals</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__col-title">Company</h4>
+        <ul>
+          <li><a routerLink="/about">About Us</a></li>
+          <li><a routerLink="/contact">Contact</a></li>
+          <li><a routerLink="/careers">Careers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__col-title">Support</h4>
+        <ul>
+          <li><a routerLink="/faq">FAQ</a></li>
+          <li><a routerLink="/shipping">Shipping</a></li>
+          <li><a routerLink="/returns">Returns</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer__bottom">
+    <p>© {{ year }} InnoShop. All rights reserved.</p>
+    <div class="footer__bottom-links">
+      <a routerLink="/privacy">Privacy Policy</a>
+      <a routerLink="/terms">Terms of Service</a>
+    </div>
+  </div>
+</footer>
