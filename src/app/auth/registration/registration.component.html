@@ -1,0 +1,112 @@
+<div class="auth-page">
+  <div class="auth-card">
+
+    <div class="auth-card__header">
+      <a routerLink="/" class="auth-card__logo">🛍️ Inno<strong>Shop</strong></a>
+      <h1 class="auth-card__title">Create Account</h1>
+      <p class="auth-card__subtitle">Join thousands of happy shoppers</p>
+    </div>
+
+    <form class="auth-form" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+
+      <!-- Name Row -->
+      <div class="form-row">
+        <div class="form-group" [class.form-group--error]="isInvalid('firstName')">
+          <label class="form-label">First Name</label>
+          <input class="form-input" type="text" placeholder="John" formControlName="firstName" />
+          <span class="form-error" *ngIf="isInvalid('firstName')">
+            First name is required
+          </span>
+        </div>
+
+        <div class="form-group" [class.form-group--error]="isInvalid('lastName')">
+          <label class="form-label">Last Name</label>
+          <input class="form-input" type="text" placeholder="Doe" formControlName="lastName" />
+          <span class="form-error" *ngIf="isInvalid('lastName')">
+            Last name is required
+          </span>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group" [class.form-group--error]="isInvalid('email')">
+        <label class="form-label">Email Address</label>
+        <div class="form-input-wrapper">
+          <span class="form-input-icon">✉️</span>
+          <input class="form-input form-input--icon" type="email" placeholder="john@example.com" formControlName="email" />
+        </div>
+        <span class="form-error" *ngIf="isInvalid('email') && getControl('email')?.errors?.['required']">Email is required</span>
+        <span class="form-error" *ngIf="isInvalid('email') && getControl('email')?.errors?.['email']">Enter a valid email</span>
+      </div>
+
+      <!-- Phone -->
+      <div class="form-group" [class.form-group--error]="isInvalid('phone')">
+        <label class="form-label">Phone Number</label>
+        <div class="form-input-wrapper">
+          <span class="form-input-icon">📱</span>
+          <input class="form-input form-input--icon" type="tel" placeholder="+1 234 567 8900" formControlName="phone" />
+        </div>
+        <span class="form-error" *ngIf="isInvalid('phone')">Enter a valid phone number</span>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group" [class.form-group--error]="isInvalid('password')">
+        <label class="form-label">Password</label>
+        <div class="form-input-wrapper">
+          <span class="form-input-icon">🔒</span>
+          <input class="form-input form-input--icon" [type]="showPassword ? 'text' : 'password'" placeholder="Min. 8 characters" formControlName="password" />
+          <button type="button" class="form-input-toggle" (click)="showPassword = !showPassword">
+            {{ showPassword ? '🙈' : '👁️' }}
+          </button>
+        </div>
+        <span class="form-error" *ngIf="isInvalid('password') && getControl('password')?.errors?.['required']">Password is required</span>
+        <span class="form-error" *ngIf="isInvalid('password') && getControl('password')?.errors?.['minlength']">Minimum 8 characters</span>
+
+        <!-- Strength bar -->
+        <div class="password-strength" *ngIf="getControl('password')?.value">
+          <div class="password-strength__bar">
+            <div class="password-strength__fill" [style.width]="passwordStrength.width" [style.background]="passwordStrength.color"></div>
+          </div>
+          <span class="password-strength__label" [style.color]="passwordStrength.color">{{ passwordStrength.label }}</span>
+        </div>
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="form-group" [class.form-group--error]="isInvalid('confirmPassword') || registrationForm.errors?.['mismatch']">
+        <label class="form-label">Confirm Password</label>
+        <div class="form-input-wrapper">
+          <span class="form-input-icon">🔒</span>
+          <input class="form-input form-input--icon" [type]="showConfirm ? 'text' : 'password'" placeholder="Repeat your password" formControlName="confirmPassword" />
+          <button type="button" class="form-input-toggle" (click)="showConfirm = !showConfirm">
+            {{ showConfirm ? '🙈' : '👁️' }}
+          </button>
+        </div>
+        <span class="form-error" *ngIf="registrationForm.errors?.['mismatch'] && getControl('confirmPassword')?.touched">
+          Passwords do not match
+        </span>
+      </div>
+
+      <!-- Terms -->
+      <div class="form-group form-group--checkbox" [class.form-group--error]="isInvalid('terms')">
+        <label class="form-checkbox">
+          <input type="checkbox" formControlName="terms" />
+          <span class="form-checkbox__box"></span>
+          <span>I agree to the <a routerLink="/terms">Terms</a> and <a routerLink="/privacy">Privacy Policy</a></span>
+        </label>
+        <span class="form-error" *ngIf="isInvalid('terms')">You must accept the terms</span>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="auth-submit" [class.auth-submit--loading]="isLoading" [disabled]="isLoading">
+        <span *ngIf="!isLoading">Create Account</span>
+        <span *ngIf="isLoading" class="spinner"></span>
+      </button>
+
+    </form>
+
+    <p class="auth-card__footer">
+      Already have an account? <a routerLink="/login">Sign in</a>
+    </p>
+
+  </div>
+</div>
